@@ -4,6 +4,7 @@ export const Container = styled.div`
     min-width: calc(30% - 1rem);
     height: 20px;
     background-color: #00F;
+    opacity: ${(props) => props.foraDeVista ? 0.3 : 1};
 
     & + & {
         margin-left: 1rem;
