@@ -9,15 +9,17 @@ const SlideItem = ({ vistaSlide, scrollX }) => {
         if (vistaSlide) {
             const { inicio, fim } = vistaSlide;
 
-            const { x, width } = slideItemRef.current.getBoundingClientRect();
+            const { width } = slideItemRef.current.getBoundingClientRect();
+            const x = slideItemRef.current.offsetLeft + scrollX;
             const posicaoVistaFim = x + width;
 
-            console.log(posicaoVistaFim);
             setForaDeVista(x < inicio || posicaoVistaFim > fim);
         }
-    }, [vistaSlide]);
+    }, [vistaSlide, scrollX]);
 
-    return <Container ref={slideItemRef} foraDeVista={foraDeVista}></Container>;
+    return <Container ref={slideItemRef} foraDeVista={foraDeVista}>
+
+    </Container>;
 };
 
 export default SlideItem;

@@ -3,7 +3,6 @@ import styled  from "styled-components";
 export const Container = styled.div`
     width: 100%;
     position: relative;
-    background-color: #F00;
 `;
 
 export const Slide = styled.div`
@@ -12,6 +11,6 @@ export const Slide = styled.div`
 
     & > div {
         display: flex;
-        /* transition: transform 0.3s ease; */
+        transition: transform 0.4s ease;
     }
 `;
