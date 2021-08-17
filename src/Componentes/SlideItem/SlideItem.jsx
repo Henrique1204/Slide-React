@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Container } from './SlideItem.styled';
 
-const SlideItem = ({ vistaSlide, scrollX, children }) => {
+const SlideItem = ({ vistaSlide, scrollX, colunas, cor }) => {
     const [foraDeVista, setForaDeVista] = React.useState(false);
     const slideItemRef = React.useRef();
 
@@ -11,17 +11,20 @@ const SlideItem = ({ vistaSlide, scrollX, children }) => {
             const { inicio, fim } = vistaSlide;
 
             const { width } = slideItemRef.current.getBoundingClientRect();
-            const x = slideItemRef.current.offsetLeft + scrollX;
-            const posicaoVistaFim = x + width;
+            const posicaoVistaInicio = slideItemRef.current.offsetLeft + scrollX;
+            const posicaoVistaFim = Math.floor(posicaoVistaInicio + width);
 
-            setForaDeVista(x < inicio || posicaoVistaFim > fim);
+            setForaDeVista(posicaoVistaInicio < inicio || posicaoVistaFim > fim);
         }
     }, [vistaSlide, scrollX]);
 
     return (
-        <Container ref={slideItemRef} foraDeVista={foraDeVista}>
-            {children}
-        </Container>
+        <Container
+            ref={slideItemRef}
+            foraDeVista={foraDeVista}
+            colunas={colunas}
+            cor={cor}
+        />
     );
 };
 

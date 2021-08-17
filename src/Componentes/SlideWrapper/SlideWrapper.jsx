@@ -9,13 +9,10 @@ const SlideWrapper = ({ children, setVistaTela, scrollX, setScrollX }) => {
     const slideRef = React.useRef();
 
     const calcularVistaTela = React.useCallback(() => {
-        if (slideWrapperRef.current && slideRef.current) {
-            const { x } = slideWrapperRef.current.getBoundingClientRect();
+        if (slideRef.current) {
             const { width } = slideRef.current.getBoundingClientRect();
-
-            const finalVista = width - x;
-
-            setVistaTela({ inicio: 0, fim: finalVista });
+    
+            setVistaTela({ inicio: 0, fim: width });
         }
     }, [setVistaTela]);
 
@@ -23,9 +20,9 @@ const SlideWrapper = ({ children, setVistaTela, scrollX, setScrollX }) => {
         const slideWrapper = slideWrapperRef.current.getBoundingClientRect();
         const slideItem = slideRef.current.firstChild.getBoundingClientRect();
 
-        const quantidadeItens = Math.floor(slideWrapper.width / slideItem.width);
+        const quantidadeItens = Math.floor(slideWrapper.width / slideItem.width) - 1;
 
-        return quantidadeItens * slideItem.width;
+        return quantidadeItens * slideItem.width + 16;
     }, []);
 
     const moverParaEsquerda = () => setScrollX((scrollX) => {
@@ -36,12 +33,16 @@ const SlideWrapper = ({ children, setVistaTela, scrollX, setScrollX }) => {
     });
 
     const moverParaDireita = () => setScrollX((scrollX) => {
-        const scrollWidth = slideWrapperRef.current.scrollWidth;
+        const scrollWidth = slideRef.current.scrollWidth;
+        const { width } = slideRef.current.getBoundingClientRect();
 
         const scrollDireita = scrollX - calcularPassoScroll();
-        const scrollNovo = scrollWidth + scrollDireita < 0 ? -scrollWidth : scrollDireita;
 
-        return scrollNovo;
+        if (scrollWidth + scrollDireita < 0) {
+            return width - scrollWidth;
+        } else {
+            return scrollDireita;
+        }
     });
 
     React.useEffect(() => {
