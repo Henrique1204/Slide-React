@@ -13,3 +13,15 @@ export const Slide = styled.div`
         transition: transform 0.4s ease;
     }
 `;
+
+export const SlideVazdio = styled.p`
+    width: 320px;
+    border-radius: 1rem;
+    padding: 1rem;
+    margin: 2rem auto;
+    font-size: 1.25rem;
+    text-align: center;
+    color: #333;
+    background-color: #E7E7E7;
+    box-shadow: 0px 0px 10px rgba(44, 44, 44, 0.5);
+`;

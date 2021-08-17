@@ -1,7 +1,8 @@
 import React from 'react';
+
 import { Container } from './SlideItem.styled';
 
-const SlideItem = ({ vistaSlide, scrollX }) => {
+const SlideItem = ({ vistaSlide, scrollX, children }) => {
     const [foraDeVista, setForaDeVista] = React.useState(false);
     const slideItemRef = React.useRef();
 
@@ -17,9 +18,11 @@ const SlideItem = ({ vistaSlide, scrollX }) => {
         }
     }, [vistaSlide, scrollX]);
 
-    return <Container ref={slideItemRef} foraDeVista={foraDeVista}>
-
-    </Container>;
+    return (
+        <Container ref={slideItemRef} foraDeVista={foraDeVista}>
+            {children}
+        </Container>
+    );
 };
 
 export default SlideItem;
