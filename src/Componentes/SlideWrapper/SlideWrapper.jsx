@@ -21,26 +21,34 @@ const SlideWrapper = () => {
         setSlideVistaTela({ inicio: 0, fim: finalVista });
     }, []);
 
+    const calcularPassoScroll = React.useCallback(() => {
+        const slideWrapper = slideWrapperRef.current.getBoundingClientRect();
+        const slideItem = slideRef.current.firstChild.getBoundingClientRect();
+
+        const quantidadeItens = Math.floor(slideWrapper.width / slideItem.width);
+
+        return quantidadeItens * slideItem.width;
+    }, []);
+
     const moverParaEsquerda = () => setSlideScrollX((scrollX) => {
-        const scrollEsquerda = scrollX + 400;
+        const scrollEsquerda = scrollX + calcularPassoScroll();
         const scrollNovo = scrollEsquerda > 0 ? 0 : scrollEsquerda;
 
-        calcularVistaTela(scrollNovo);
         return scrollNovo;
     });
 
     const moverParaDireita = () => setSlideScrollX((scrollX) => {
         const scrollWidth = slideWrapperRef.current.scrollWidth;
-        const scrollDireita = scrollX - 400;
+
+        const scrollDireita = scrollX - calcularPassoScroll();
         const scrollNovo = scrollWidth + scrollDireita < 0 ? -scrollWidth : scrollDireita;
 
-        calcularVistaTela(scrollNovo);
         return scrollNovo;
     });
 
     React.useEffect(() => {
-        calcularVistaTela(null);
-    }, [calcularVistaTela]);
+        calcularVistaTela();
+    }, [calcularVistaTela, slideScrollX]);
 
     return (
         <Container>

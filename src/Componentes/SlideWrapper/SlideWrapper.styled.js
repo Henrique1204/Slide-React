@@ -7,7 +7,6 @@ export const Container = styled.div`
 
 export const Slide = styled.div`
     width: 100%;
-    overflow: hidden;
 
     & > div {
         display: flex;
