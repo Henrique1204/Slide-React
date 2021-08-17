@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     min-width: calc(30% - 1rem);
-    height: 20px;
+    height: 300px;
     background-color: #00F;
     opacity: ${(props) => props.foraDeVista ? 0.3 : 1};
 

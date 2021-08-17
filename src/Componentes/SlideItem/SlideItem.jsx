@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container } from './SlideItem.styled';
 
-const SlideItem = ({ vistaSlide }) => {
+const SlideItem = ({ vistaSlide, scrollX }) => {
     const [foraDeVista, setForaDeVista] = React.useState(false);
     const slideItemRef = React.useRef();
 
@@ -12,6 +12,7 @@ const SlideItem = ({ vistaSlide }) => {
             const { x, width } = slideItemRef.current.getBoundingClientRect();
             const posicaoVistaFim = x + width;
 
+            console.log(posicaoVistaFim);
             setForaDeVista(x < inicio || posicaoVistaFim > fim);
         }
     }, [vistaSlide]);
