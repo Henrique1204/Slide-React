@@ -1,18 +1,15 @@
 import React from 'react';
 
-import { Container } from './SlideButtonsArrowNav.styled';
+import SlideButtonArrow from '../SlideButtonArrow';
 
-import SlideButtonArrow from '../SlideButtonArrow/SlideButtonArrow';
-
-const SlideButtonsArrowNav = ({ slideWrapperRef, slideRef, scrollX, setScrollX }) => {
-    const [showScroll, setShowScroll] = React.useState(false);
+const SlideButtonsArrowNav = ({ showNav, slideWrapperRef, slideRef, scrollX, setScrollX }) => {
     const [direitaDisabled, setDireitaDisabled] = React.useState(false);
     const [esquerdaDisabled, setEsquerdaDisabled] = React.useState(false);
 
     const calcularPassoScroll = React.useCallback(() => {
         const slideItem = slideRef.current.firstChild.getBoundingClientRect();
 
-        return slideItem.width;
+        return slideItem.width + 16;
     }, [slideRef]);
 
     const checarUltimoMovimento = React.useCallback((passo, direcao) => {
@@ -45,24 +42,19 @@ const SlideButtonsArrowNav = ({ slideWrapperRef, slideRef, scrollX, setScrollX }
     });
 
     React.useEffect(() => {
-        const { clientWidth } = slideWrapperRef.current;
-        const { scrollWidth } = slideRef.current;
-
-        setShowScroll(() => scrollWidth > clientWidth);
-      }, [slideWrapperRef, slideRef]);
-
-    React.useEffect(() => {
         const passo = calcularPassoScroll();
         const movimentoEsquerda = checarUltimoMovimento(passo, 'left');
         const movimentoDireita = checarUltimoMovimento(-passo, 'right');
 
+        if (movimentoEsquerda.teste) setScrollX(0);
         setEsquerdaDisabled(movimentoEsquerda.teste);
-        setDireitaDisabled(movimentoDireita.teste);
-    }, [calcularPassoScroll, checarUltimoMovimento, scrollX]);
 
-    if (showScroll) {
+        setDireitaDisabled(movimentoDireita.teste);
+    }, [calcularPassoScroll, checarUltimoMovimento, setScrollX]);
+
+    if (showNav) {
         return (
-            <Container>
+            <nav>
                 <SlideButtonArrow
                     direcao='left'
                     onClick={moverParaEsquerda}
@@ -78,7 +70,7 @@ const SlideButtonsArrowNav = ({ slideWrapperRef, slideRef, scrollX, setScrollX }
                 >
                     <span>{'>'}</span>
                 </SlideButtonArrow>
-            </Container>
+            </nav>
         );
     }
 

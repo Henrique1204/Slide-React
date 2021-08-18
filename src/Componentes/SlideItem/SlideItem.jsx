@@ -11,9 +11,10 @@ const SlideItem = ({ vistaSlide, scrollX, colunas, imagem }) => {
             const { inicio, fim } = vistaSlide;
 
             const { width } = slideItemRef.current.getBoundingClientRect();
-            const posicaoVistaInicio = slideItemRef.current.offsetLeft + scrollX;
+            const posicaoVistaInicio = Math.ceil(slideItemRef.current.offsetLeft + scrollX);
             const posicaoVistaFim = Math.floor(posicaoVistaInicio + width);
 
+            console.log(posicaoVistaInicio, inicio)
             setForaDeVista(posicaoVistaInicio < inicio || posicaoVistaFim > fim);
         }
     }, [vistaSlide, scrollX]);
