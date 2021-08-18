@@ -7,6 +7,12 @@ export const Container = styled.div`
     & + & {
         margin-top: 4rem;
     }
+
+    @media (max-width: 1366px) {
+        nav {
+            display: none;
+        }
+    }
 `;
 
 export const Slide = styled.div`
@@ -16,6 +22,10 @@ export const Slide = styled.div`
         padding: 1rem 0;
         display: flex;
         transition: transform 0.4s ease;
+
+        @media (max-width: 1366px) {
+            overflow-x: scroll;
+        }
     }
 `;
 

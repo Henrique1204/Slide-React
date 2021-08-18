@@ -13,10 +13,12 @@ const SlideItem = ({ vistaSlide, scrollX, colunas, imagem }) => {
             const { width } = slideItemRef.current.getBoundingClientRect();
             const { offsetLeft } = slideItemRef.current;
 
-            const posicaoVistaInicio = Math.floor(Math.abs(offsetLeft + scrollX));
-            const posicaoVistaFim = Math.floor(posicaoVistaInicio + width);
+            const posInicioCacl = offsetLeft + scrollX;
+            const posInicio = Number(posInicioCacl.toString().split('.')[0]);
 
-            setForaDeVista(posicaoVistaInicio < inicio || posicaoVistaFim > fim);
+            const posFim = Math.floor(posInicio + width);
+
+            setForaDeVista(posInicio < inicio || posFim > fim);
         }
     }, [vistaSlide, scrollX]);
 
