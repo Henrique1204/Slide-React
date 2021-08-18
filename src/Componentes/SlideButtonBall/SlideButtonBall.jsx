@@ -1,7 +1,11 @@
 import React from 'react';
 
-const SlideButtonBall = () => {
-    return <></>;
+import { Container } from './SlideButtonBall.styled';
+
+const SlideButtonBall = ({ slideItemRef, setScrollX }) => {
+    
+
+    return <Container></Container>;
 };
 
 export default SlideButtonBall;

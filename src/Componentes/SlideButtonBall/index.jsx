@@ -1,3 +1,3 @@
-import SlideButtonBall from 'react';
+import SlideButtonBall from './SlideButtonBall';
 
 export default SlideButtonBall;
