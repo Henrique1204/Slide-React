@@ -6,33 +6,31 @@ import SlideWrapper from './Componentes/SlideWrapper';
 import SlideItem from './Componentes/SlideItem';
 
 const slide4Colunas = [
-  { colunas: 4, cor: '#00F' },
-  { colunas: 4, cor: '#F00' },
-  { colunas: 4, cor: '#0FF' },
-  { colunas: 4, cor: '#F0F' },
-  { colunas: 4, cor: '#FF0' },
-  { colunas: 4, cor: '#00F' },
-  { colunas: 4, cor: '#F00' },
-  { colunas: 4, cor: '#0FF' },
-  { colunas: 4, cor: '#F0F' },
-  { colunas: 4, cor: '#FF0' }
+  { colunas: 4, imagem: 'https://picsum.photos/id/101/200/300' },
+  { colunas: 4, imagem: 'https://picsum.photos/id/102/200/300' },
+  { colunas: 4, imagem: 'https://picsum.photos/id/103/200/300' },
+  { colunas: 4, imagem: 'https://picsum.photos/id/104/200/300' },
+  { colunas: 4, imagem: 'https://picsum.photos/id/106/200/300' },
+  { colunas: 4, imagem: 'https://picsum.photos/id/108/200/300' },
+  { colunas: 4, imagem: 'https://picsum.photos/id/109/200/300' },
+  { colunas: 4, imagem: 'https://picsum.photos/id/110/200/300' },
+  { colunas: 4, imagem: 'https://picsum.photos/id/111/200/300' }
 ];
 
 const slide6Colunas = [
-  { colunas: 6, cor: '#00F' },
-  { colunas: 6, cor: '#F00' },
-  { colunas: 6, cor: '#0FF' },
-  { colunas: 6, cor: '#F0F' },
-  { colunas: 6, cor: '#FF0' },
-  { colunas: 6, cor: '#00F' },
-  { colunas: 6, cor: '#F00' },
-  { colunas: 6, cor: '#0FF' },
-  { colunas: 6, cor: '#F0F' },
-  { colunas: 6, cor: '#FF0' }
+  { colunas: 6, imagem: 'https://picsum.photos/id/201/200/300' },
+  { colunas: 6, imagem: 'https://picsum.photos/id/202/200/300' },
+  { colunas: 6, imagem: 'https://picsum.photos/id/203/200/300' },
+  { colunas: 6, imagem: 'https://picsum.photos/id/204/200/300' },
+  { colunas: 6, imagem: 'https://picsum.photos/id/206/200/300' },
+  { colunas: 6, imagem: 'https://picsum.photos/id/209/200/300' },
+  { colunas: 6, imagem: 'https://picsum.photos/id/210/200/300' },
+  { colunas: 6, imagem: 'https://picsum.photos/id/211/200/300' },
+  { colunas: 6, imagem: 'https://picsum.photos/id/212/200/300' }
 ];
 
 const slide8Colunas = [
-  { colunas: 8, cor: '#00F' },
+  { colunas: 2, imagem: 'https://picsum.photos/id/301/400/300' }
 ];
 
 const App = () => {
@@ -52,12 +50,12 @@ const App = () => {
         scrollX={scrollX4Colunas}
         setScrollX={setScrollX4Colunas}
       >
-        { slide4Colunas.map(({ colunas, cor }, index) => (
+        { slide4Colunas.map(({ colunas, imagem }, index) => (
           <SlideItem
             vistaSlide={vistaTela4Colunas}
             scrollX={scrollX4Colunas}
             colunas={colunas}
-            cor={cor}
+            imagem={imagem}
             key={index}
           />
         )) }
@@ -68,12 +66,12 @@ const App = () => {
         scrollX={scrollX6Colunas}
         setScrollX={setScrollX6Colunas}
       >
-        { slide6Colunas.map(({ colunas, cor }, index) => (
+        { slide6Colunas.map(({ colunas, imagem }, index) => (
           <SlideItem
             vistaSlide={vistaTela6Colunas}
             scrollX={scrollX6Colunas}
             colunas={colunas}
-            cor={cor}
+            imagem={imagem}
             key={index}
           />
         )) }
@@ -84,12 +82,12 @@ const App = () => {
         scrollX={scrollX8Colunas}
         setScrollX={setScrollX8Colunas}
       >
-        { slide8Colunas.map(({ colunas, cor }, index) => (
+        { slide8Colunas.map(({ colunas, imagem }, index) => (
           <SlideItem
             vistaSlide={vistaTela8Colunas}
             scrollX={scrollX8Colunas}
             colunas={colunas}
-            cor={cor}
+            imagem={imagem}
             key={index}
           />
         )) }

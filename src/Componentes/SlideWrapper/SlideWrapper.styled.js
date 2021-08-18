@@ -14,6 +14,7 @@ export const Slide = styled.div`
     overflow: hidden;
 
     & > div {
+        padding: 1rem 0;
         display: flex;
         transition: transform 0.4s ease;
     }

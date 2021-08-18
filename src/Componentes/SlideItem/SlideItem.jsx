@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Container } from './SlideItem.styled';
 
-const SlideItem = ({ vistaSlide, scrollX, colunas, cor }) => {
+const SlideItem = ({ vistaSlide, scrollX, colunas, imagem }) => {
     const [foraDeVista, setForaDeVista] = React.useState(false);
     const slideItemRef = React.useRef();
 
@@ -23,7 +23,7 @@ const SlideItem = ({ vistaSlide, scrollX, colunas, cor }) => {
             ref={slideItemRef}
             foraDeVista={foraDeVista}
             colunas={colunas}
-            cor={cor}
+            imagem={imagem}
         />
     );
 };
