@@ -2,23 +2,20 @@ import React from 'react';
 
 import SlideButtonArrow from '../SlideButtonArrow';
 
-const SlideButtonsArrowNav = ({ showNav, slideWrapperRef, slideRef, scrollX, setScrollX }) => {
+const SlideButtonsArrowNav = ({
+    calcularPassoScroll,
+    passos,
+    scrollX,
+    setScrollX,
+    pegarScrollWidthSlide
+}) => {
     const [direitaDisabled, setDireitaDisabled] = React.useState(false);
     const [esquerdaDisabled, setEsquerdaDisabled] = React.useState(false);
 
-    const calcularPassoScroll = React.useCallback(() => {
-        const slideItem = slideRef.current.firstChild.getBoundingClientRect();
-
-        return slideItem.width + 16;
-    }, [slideRef]);
-
     const checarUltimoMovimento = React.useCallback((passo, direcao) => {
-        const slideWrapper = slideWrapperRef.current.getBoundingClientRect();
-        const quantidadeItens = Math.floor(slideWrapper.width / Math.abs(passo));
+        const passoSessao = passos * passo;
 
-        const passoSessao = quantidadeItens * passo;
-
-        const { scrollWidth } = slideRef.current;
+        const scrollWidth = pegarScrollWidthSlide();
         const scroll = scrollX + passo;
 
         const testeDireita = scrollX + passoSessao;
@@ -28,7 +25,7 @@ const SlideButtonsArrowNav = ({ showNav, slideWrapperRef, slideRef, scrollX, set
         if (direcao === 'left' && testeEsquerda > 0) return { teste: true };
         else if (direcao === 'right' && scrollWidth + testeDireita < 0) return { teste: true };
         else return { teste: false, scroll };
-    }, [slideWrapperRef, scrollX, slideRef]);
+    }, [passos, pegarScrollWidthSlide, scrollX]);
 
     const moverParaEsquerda = () => setScrollX(() => {
         const passo = calcularPassoScroll();
@@ -54,29 +51,25 @@ const SlideButtonsArrowNav = ({ showNav, slideWrapperRef, slideRef, scrollX, set
         setDireitaDisabled(movimentoDireita.teste);
     }, [calcularPassoScroll, checarUltimoMovimento, setScrollX]);
 
-    if (showNav) {
-        return (
-            <nav>
-                <SlideButtonArrow
-                    direcao='left'
-                    onClick={moverParaEsquerda}
-                    disabled={esquerdaDisabled}
-                >
-                    <span>{'<'}</span>
-                </SlideButtonArrow>
-    
-                <SlideButtonArrow
-                    direcao='right'
-                    onClick={moverParaDireita}
-                    disabled={direitaDisabled}
-                >
-                    <span>{'>'}</span>
-                </SlideButtonArrow>
-            </nav>
-        );
-    }
+    return (
+        <nav>
+            <SlideButtonArrow
+                direcao='left'
+                onClick={moverParaEsquerda}
+                disabled={esquerdaDisabled}
+            >
+                <span>{'<'}</span>
+            </SlideButtonArrow>
 
-    return <></>;
+            <SlideButtonArrow
+                direcao='right'
+                onClick={moverParaDireita}
+                disabled={direitaDisabled}
+            >
+                <span>{'>'}</span>
+            </SlideButtonArrow>
+        </nav>
+    );
 };
 
 export default SlideButtonsArrowNav;

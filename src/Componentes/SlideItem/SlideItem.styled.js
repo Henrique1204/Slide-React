@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    min-width: ${(props) => `calc((100% / ${props.colunas}) - 2rem)`};
+    min-width: ${(props) => `calc((100% / ${props.colunas}) - 1rem)`};
     height: 300px;
     border-radius: 1rem;
     background: ${(props) => `url('${props.imagem}') no-repeat center`};
