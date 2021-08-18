@@ -51,6 +51,7 @@ const SlideWrapper = ({ children, setVistaTela, scrollX, setScrollX }) => {
 
             <SlideButtonsBallNav
                 showNav={showNavScroll}
+                slideWrapperRef={slideWrapperRef}
                 slideRef={slideRef}
                 scrollX={scrollX}
                 setScrollX={setScrollX}
