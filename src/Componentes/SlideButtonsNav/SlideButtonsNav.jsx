@@ -10,22 +10,25 @@ const SlideButtonsNav = ({ slideWrapperRef, slideRef, scrollX, setScrollX }) => 
     const [esquerdaDisabled, setEsquerdaDisabled] = React.useState(false);
 
     const calcularPassoScroll = React.useCallback(() => {
-        const slideWrapper = slideWrapperRef.current.getBoundingClientRect();
         const slideItem = slideRef.current.firstChild.getBoundingClientRect();
 
-        const quantidadeItens = Math.floor(slideWrapper.width / slideItem.width);
-
-        return quantidadeItens * slideItem.width;
-    }, [slideWrapperRef, slideRef]);
+        return slideItem.width;
+    }, [slideRef]);
 
     const checarUltimoMovimento = React.useCallback((passo, direcao) => {
+        const slideWrapper = slideWrapperRef.current.getBoundingClientRect();
+        const quantidadeItens = Math.floor(slideWrapper.width / Math.abs(passo));
+
+        const passoSessao = quantidadeItens * passo;
+
         const { scrollWidth } = slideRef.current;
+        const scrollTeste = scrollX + passoSessao;
         const scroll = scrollX + passo;
 
         if (direcao === 'left' && scroll > 0) return { teste: true };
-        else if (direcao === 'right' && scrollWidth + scroll < 0) return { teste: true };
+        else if (direcao === 'right' && scrollWidth + scrollTeste < 0) return { teste: true };
         else return { teste: false, scroll };
-    }, [scrollX, slideRef]);
+    }, [slideWrapperRef, scrollX, slideRef]);
 
     const moverParaEsquerda = () => setScrollX(() => {
         const passo = calcularPassoScroll();
@@ -65,7 +68,7 @@ const SlideButtonsNav = ({ slideWrapperRef, slideRef, scrollX, setScrollX }) => 
                     onClick={moverParaEsquerda}
                     disabled={esquerdaDisabled}
                 >
-                    {'<'}
+                    <span>{'<'}</span>
                 </SlideButtonArrow>
     
                 <SlideButtonArrow
@@ -73,7 +76,7 @@ const SlideButtonsNav = ({ slideWrapperRef, slideRef, scrollX, setScrollX }) => 
                     onClick={moverParaDireita}
                     disabled={direitaDisabled}
                 >
-                    {'>'}
+                    <span>{'>'}</span>
                 </SlideButtonArrow>
             </Container>
         );

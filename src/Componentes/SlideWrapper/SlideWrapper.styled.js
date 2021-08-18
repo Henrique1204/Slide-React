@@ -11,7 +11,6 @@ export const Container = styled.div`
 
 export const Slide = styled.div`
     width: 100%;
-    overflow: hidden;
 
     & > div {
         padding: 1rem 0;

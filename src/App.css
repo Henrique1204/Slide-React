@@ -11,6 +11,7 @@
 
 body {
   padding: 4rem 2rem;
+  overflow-x: hidden;
 }
 
 h1,
