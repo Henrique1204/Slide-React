@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Container, Slide, SlideVazdio } from './SlideWrapper.styled';
 
-import SlideButtonsNav from '../SlideButtonsNav';
+import SlideButtonsArrowNav from '../SlideButtonsArrowNav';
 
 const SlideWrapper = ({ children, setVistaTela, scrollX, setScrollX }) => {
     const slideWrapperRef = React.useRef();
@@ -24,7 +24,7 @@ const SlideWrapper = ({ children, setVistaTela, scrollX, setScrollX }) => {
 
     return (
         <Container>
-            <SlideButtonsNav
+            <SlideButtonsArrowNav
                 slideWrapperRef={slideWrapperRef}
                 slideRef={slideRef}
                 scrollX={scrollX}

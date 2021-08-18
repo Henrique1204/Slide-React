@@ -18,22 +18,6 @@ export const Container = styled.button`
     cursor: pointer;
     transition: all 0.3s ease;
 
-    @keyframes apontar {
-        0% {
-            transform: ${(props) => props.direcao === 'left' ? 'translateX(0.2rem)' : 'translateX(-0.2rem)'};
-        } 50% {
-            transform: ${(props) => props.direcao === 'left' ? 'translateX(-0.25rem)' : 'translateX(0.25rem)'};
-        } 100% {
-            transform: ${(props) => props.direcao === 'left' ? 'translateX(0.2rem)' : 'translateX(-0.2rem)'};
-        }
-    }
-
-    span {
-        transform: ${(props) => props.direcao === 'left' ? 'translateX(0.2rem)' : 'translateX(-0.2rem)'};
-        animation: apontar 1s ease infinite;
-        display: block;
-    }
-
     &:hover {
         border-color: initial;
         transform: scale(1.1);
@@ -45,10 +29,5 @@ export const Container = styled.button`
         opacity: 0.8;
         transform: scale(0.8);
         cursor: not-allowed;
-
-        span {
-            transform: initial;
-            animation: none;
-        }
     }
 `;

@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { Container } from './SlideButtonsNav.styled';
+import { Container } from './SlideButtonsArrowNav.styled';
 
 import SlideButtonArrow from '../SlideButtonArrow/SlideButtonArrow';
 
-const SlideButtonsNav = ({ slideWrapperRef, slideRef, scrollX, setScrollX }) => {
+const SlideButtonsArrowNav = ({ slideWrapperRef, slideRef, scrollX, setScrollX }) => {
     const [showScroll, setShowScroll] = React.useState(false);
     const [direitaDisabled, setDireitaDisabled] = React.useState(false);
     const [esquerdaDisabled, setEsquerdaDisabled] = React.useState(false);
@@ -85,4 +85,4 @@ const SlideButtonsNav = ({ slideWrapperRef, slideRef, scrollX, setScrollX }) => 
     return <></>;
 };
 
-export default SlideButtonsNav;
+export default SlideButtonsArrowNav;
