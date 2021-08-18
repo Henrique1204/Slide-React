@@ -3,7 +3,7 @@ import React from 'react';
 import { Container, Slide, SlideVazdio } from './SlideWrapper.styled';
 
 import SlideButtonsArrowNav from '../SlideButtonsArrowNav';
-import SlideButtonBallNav from '../SlideButtonBallNav/SlideButtonBallNav';
+import SlideButtonsBallNav from '../SlideButtonsBallNav';
 
 const SlideWrapper = ({ children, setVistaTela, scrollX, setScrollX }) => {
     const [showNavScroll, setShowNavScroll] = React.useState(false);
@@ -48,9 +48,10 @@ const SlideWrapper = ({ children, setVistaTela, scrollX, setScrollX }) => {
                 </div>
             </Slide>
 
-            <SlideButtonBallNav
+            <SlideButtonsBallNav
                 showNav={showNavScroll}
                 slideRef={slideRef}
+                scrollX={scrollX}
                 setScrollX={setScrollX}
             />
         </Container>

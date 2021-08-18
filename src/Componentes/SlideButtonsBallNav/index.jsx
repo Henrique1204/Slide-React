@@ -1,3 +1,3 @@
-import SlideButtonBallNav from './SlideButtonBallNav';
+import SlideButtonsBallNav from './SlideButtonsBallNav';
 
-export default SlideButtonBallNav;
+export default SlideButtonsBallNav;

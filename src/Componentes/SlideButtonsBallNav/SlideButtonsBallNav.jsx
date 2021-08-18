@@ -2,15 +2,14 @@ import React from 'react';
 
 import SlideButtonBall from '../SlideButtonBall/SlideButtonBall';
 
-const SlideButtonBallNav = ({ showNav, slideRef, setScrollX }) => {
+const SlideButtonBallNav = ({ showNav, slideRef, scrollX, setScrollX }) => {
     const [slideItensOffset, setSlideItensOffset] = React.useState(null);
-    const [buttonAtivo, setButtonAtivo] = React.useState(0);
 
     React.useEffect(() => {
         const slideItens = Array.from(slideRef.current.querySelectorAll(':scope > *'));
 
         setSlideItensOffset(() => {
-            return slideItens.map((item) => item.offsetLeft);
+            return slideItens.map(({ offsetLeft }) => offsetLeft);
         });
     }, [slideRef]);
 
@@ -20,10 +19,8 @@ const SlideButtonBallNav = ({ showNav, slideRef, setScrollX }) => {
                 { slideItensOffset && slideItensOffset.map((offset, index) => (
                     <SlideButtonBall
                         offset={offset}
+                        scrollX={scrollX}
                         setScrollX={setScrollX}
-                        ativo={buttonAtivo === index}
-                        setAtivo={setButtonAtivo}
-                        index={index}
                         key={index}
                     />
                 )) }
