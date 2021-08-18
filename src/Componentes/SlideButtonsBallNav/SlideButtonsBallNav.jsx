@@ -19,7 +19,7 @@ const SlideButtonBallNav = ({ showNav, slideWrapperRef, slideRef, scrollX, setSc
                 return (diff >= quantidadeItens) ? [...acc, item.offsetLeft] : [...acc];
             }, [])
         ));
-    }, [slideWrapperRef, slideRef]);
+    }, [slideWrapperRef, slideRef, scrollX]);
 
     if (showNav) {
         return (

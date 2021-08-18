@@ -19,11 +19,14 @@ const SlideButtonsArrowNav = ({ showNav, slideWrapperRef, slideRef, scrollX, set
         const passoSessao = quantidadeItens * passo;
 
         const { scrollWidth } = slideRef.current;
-        const scrollTeste = scrollX + passoSessao;
         const scroll = scrollX + passo;
 
-        if (direcao === 'left' && scroll > 0) return { teste: true };
-        else if (direcao === 'right' && scrollWidth + scrollTeste < 0) return { teste: true };
+        const testeDireita = scrollX + passoSessao;
+        const testeEsquerda = Number(scroll.toString().split('.')[0]);
+
+
+        if (direcao === 'left' && testeEsquerda > 0) return { teste: true };
+        else if (direcao === 'right' && scrollWidth + testeDireita < 0) return { teste: true };
         else return { teste: false, scroll };
     }, [slideWrapperRef, scrollX, slideRef]);
 
@@ -46,7 +49,6 @@ const SlideButtonsArrowNav = ({ showNav, slideWrapperRef, slideRef, scrollX, set
         const movimentoEsquerda = checarUltimoMovimento(passo, 'left');
         const movimentoDireita = checarUltimoMovimento(-passo, 'right');
 
-        if (movimentoEsquerda.teste) setScrollX(0);
         setEsquerdaDisabled(movimentoEsquerda.teste);
 
         setDireitaDisabled(movimentoDireita.teste);

@@ -11,9 +11,11 @@ const SlideItem = ({ vistaSlide, scrollX, colunas, imagem }) => {
             const { inicio, fim } = vistaSlide;
 
             const { width } = slideItemRef.current.getBoundingClientRect();
-            const { offsetLeft } = slideItemRef.current;
 
-            const posInicioCacl = offsetLeft + scrollX;
+            const { offsetLeft } = slideItemRef.current;
+            const offset = Number(offsetLeft.toString().split('.')[0]);
+
+            const posInicioCacl = offset + scrollX;
             const posInicio = Number(posInicioCacl.toString().split('.')[0]);
 
             const posFim = Math.floor(posInicio + width);
