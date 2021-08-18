@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    min-width: ${(props) => `calc((100% / ${props.colunas}) - 1rem)`};
+    min-width: ${(props) => `calc((100% / ${props.colunas}) - 2rem)`};
     height: 300px;
     background-color: ${(props) => props.cor};
     opacity: ${(props) => props.foraDeVista ? 0.3 : 1};

@@ -31,12 +31,19 @@ const slide6Colunas = [
   { colunas: 6, cor: '#FF0' }
 ];
 
+const slide8Colunas = [
+  { colunas: 8, cor: '#00F' },
+];
+
 const App = () => {
   const [vistaTela4Colunas, setVistaTela4Colunas] = React.useState(null);
   const [scrollX4Colunas, setScrollX4Colunas] = React.useState(0);
 
   const [vistaTela6Colunas, setVistaTela6Colunas] = React.useState(null);
   const [scrollX6Colunas, setScrollX6Colunas] = React.useState(0);
+
+  const [vistaTela8Colunas, setVistaTela8Colunas] = React.useState(null);
+  const [scrollX8Colunas, setScrollX8Colunas] = React.useState(0);
 
   return (
     <>
@@ -65,6 +72,22 @@ const App = () => {
           <SlideItem
             vistaSlide={vistaTela6Colunas}
             scrollX={scrollX6Colunas}
+            colunas={colunas}
+            cor={cor}
+            key={index}
+          />
+        )) }
+      </SlideWrapper>
+  
+      <SlideWrapper
+        setVistaTela={setVistaTela8Colunas}
+        scrollX={scrollX8Colunas}
+        setScrollX={setScrollX8Colunas}
+      >
+        { slide8Colunas.map(({ colunas, cor }, index) => (
+          <SlideItem
+            vistaSlide={vistaTela8Colunas}
+            scrollX={scrollX8Colunas}
             colunas={colunas}
             cor={cor}
             key={index}

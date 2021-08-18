@@ -5,6 +5,7 @@ import { Container } from './SlideButtonsNav.styled';
 import SlideButtonArrow from '../SlideButtonArrow/SlideButtonArrow';
 
 const SlideButtonsNav = ({ slideWrapperRef, slideRef, scrollX, setScrollX }) => {
+    const [showScroll, setShowScroll] = React.useState(false);
     const [direitaDisabled, setDireitaDisabled] = React.useState(false);
     const [esquerdaDisabled, setEsquerdaDisabled] = React.useState(false);
 
@@ -41,6 +42,13 @@ const SlideButtonsNav = ({ slideWrapperRef, slideRef, scrollX, setScrollX }) => 
     });
 
     React.useEffect(() => {
+        const { clientWidth } = slideWrapperRef.current;
+        const { scrollWidth } = slideRef.current;
+
+        setShowScroll(() => scrollWidth > clientWidth);
+      }, [slideWrapperRef, slideRef]);
+
+    React.useEffect(() => {
         const passo = calcularPassoScroll();
         const movimentoEsquerda = checarUltimoMovimento(passo, 'left');
         const movimentoDireita = checarUltimoMovimento(-passo, 'right');
@@ -49,25 +57,29 @@ const SlideButtonsNav = ({ slideWrapperRef, slideRef, scrollX, setScrollX }) => 
         setDireitaDisabled(movimentoDireita.teste);
     }, [calcularPassoScroll, checarUltimoMovimento, scrollX]);
 
-    return (
-        <Container>
-            <SlideButtonArrow
-                direcao='left'
-                onClick={moverParaEsquerda}
-                disabled={esquerdaDisabled}
-            >
-                {'<'}
-            </SlideButtonArrow>
+    if (showScroll) {
+        return (
+            <Container>
+                <SlideButtonArrow
+                    direcao='left'
+                    onClick={moverParaEsquerda}
+                    disabled={esquerdaDisabled}
+                >
+                    {'<'}
+                </SlideButtonArrow>
+    
+                <SlideButtonArrow
+                    direcao='right'
+                    onClick={moverParaDireita}
+                    disabled={direitaDisabled}
+                >
+                    {'>'}
+                </SlideButtonArrow>
+            </Container>
+        );
+    }
 
-            <SlideButtonArrow
-                direcao='right'
-                onClick={moverParaDireita}
-                disabled={direitaDisabled}
-            >
-                {'>'}
-            </SlideButtonArrow>
-        </Container>
-    );
+    return <></>;
 };
 
 export default SlideButtonsNav;
