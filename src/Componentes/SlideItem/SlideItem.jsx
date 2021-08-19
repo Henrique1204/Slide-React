@@ -6,6 +6,11 @@ const SlideItem = ({ vistaSlide, scrollX, children }) => {
     const [foraDeVista, setForaDeVista] = React.useState(false);
     const slideItemRef = React.useRef();
 
+    const handleResize = React.useCallback(() => {
+        const filho = slideItemRef.current.querySelector(':scope > *');
+        slideItemRef.current.style.minWidth = window.getComputedStyle(filho).minWidth;
+    }, [slideItemRef]);
+
     React.useEffect(() => {
         if (vistaSlide) {
             const { inicio, fim } = vistaSlide;
@@ -25,9 +30,11 @@ const SlideItem = ({ vistaSlide, scrollX, children }) => {
     }, [vistaSlide, scrollX]);
 
     React.useEffect(() => {
-        const filho = slideItemRef.current.querySelector(':scope > *');
-        slideItemRef.current.style.minWidth = window.getComputedStyle(filho).minWidth;
-    }, []);
+        handleResize();
+        window.addEventListener('resize', handleResize);
+
+        return () => window.removeEventListener('resize', handleResize);
+    }, [handleResize]);
 
     return (
         <Container
