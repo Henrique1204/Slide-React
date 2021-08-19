@@ -18,10 +18,10 @@ const SlideItem = ({ vistaSlide, scrollX, children }) => {
         };
     };
 
-    const handleResize = debounce(() => {
+    const handleResize = React.useCallback(() => {
         const filho = slideItemRef.current.querySelector(':scope > *');
         slideItemRef.current.style.minWidth = window.getComputedStyle(filho).minWidth;
-    }, 75);
+    }, [slideItemRef])
 
     React.useEffect(() => {
         if (vistaSlide) {
@@ -43,9 +43,11 @@ const SlideItem = ({ vistaSlide, scrollX, children }) => {
 
     React.useEffect(() => {
         handleResize();
-        window.addEventListener('resize', handleResize);
 
-        return () => window.removeEventListener('resize', handleResize);
+        const handleResizeDebouce = debounce(handleResize, 75);
+        window.addEventListener('resize', handleResizeDebouce);
+
+        return () => window.removeEventListener('resize', handleResizeDebouce);
     }, [handleResize]);
 
     return (
