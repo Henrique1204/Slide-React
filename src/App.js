@@ -19,15 +19,15 @@ const slide4Colunas = [
 ];
 
 const slide6Colunas = [
-  { colunas: 6, imagem: 'https://picsum.photos/id/201/200/300' },
-  { colunas: 6, imagem: 'https://picsum.photos/id/202/200/300' },
-  { colunas: 6, imagem: 'https://picsum.photos/id/203/200/300' },
-  { colunas: 6, imagem: 'https://picsum.photos/id/204/200/300' },
-  { colunas: 6, imagem: 'https://picsum.photos/id/206/200/300' },
-  { colunas: 6, imagem: 'https://picsum.photos/id/209/200/300' },
-  { colunas: 6, imagem: 'https://picsum.photos/id/210/200/300' },
-  { colunas: 6, imagem: 'https://picsum.photos/id/211/200/300' },
-  { colunas: 6, imagem: 'https://picsum.photos/id/212/200/300' }
+  { colunas: 6, imagem: 'https://picsum.photos/id/201/150/150' },
+  { colunas: 6, imagem: 'https://picsum.photos/id/202/150/150' },
+  { colunas: 6, imagem: 'https://picsum.photos/id/203/150/150' },
+  { colunas: 6, imagem: 'https://picsum.photos/id/204/150/150' },
+  { colunas: 6, imagem: 'https://picsum.photos/id/206/150/150' },
+  { colunas: 6, imagem: 'https://picsum.photos/id/209/150/150' },
+  { colunas: 6, imagem: 'https://picsum.photos/id/210/150/150' },
+  { colunas: 6, imagem: 'https://picsum.photos/id/211/150/150' },
+  { colunas: 6, imagem: 'https://picsum.photos/id/212/150/150' }
 ];
 
 const slide8Colunas = [
@@ -78,8 +78,12 @@ const App = () => {
           >
             <ExemploItem
               colunas={colunas}
-              imagem={imagem}
-            />
+            >
+              <img src={imagem} alt='Imagem teste' />
+              <div className='texto'>
+                <p>t is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution</p>
+              </div>
+            </ExemploItem>
           </SlideItem>
         )) }
       </SlideWrapper>

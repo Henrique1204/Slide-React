@@ -43,3 +43,23 @@ ul,
 li {
   list-style: none;
 }
+
+img {
+  width: 100%;
+  max-width: 100%;
+  display: block;
+}
+
+.texto {
+  padding: 1rem;
+}
+
+.texto p {
+  font-size: 1rem;
+  color: #666;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
