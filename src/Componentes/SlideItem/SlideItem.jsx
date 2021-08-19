@@ -6,10 +6,22 @@ const SlideItem = ({ vistaSlide, scrollX, children }) => {
     const [foraDeVista, setForaDeVista] = React.useState(false);
     const slideItemRef = React.useRef();
 
-    const handleResize = React.useCallback(() => {
+    const debounce = (callback, delay) => {
+        let timer;
+
+        return (...args) => {
+            if (timer) clearTimeout(timer);
+            timer = setTimeout(() => {
+                callback(...args);
+                timer = null;
+            }, delay);
+        };
+    };
+
+    const handleResize = debounce(() => {
         const filho = slideItemRef.current.querySelector(':scope > *');
         slideItemRef.current.style.minWidth = window.getComputedStyle(filho).minWidth;
-    }, [slideItemRef]);
+    }, 75);
 
     React.useEffect(() => {
         if (vistaSlide) {
