@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Container } from './SlideItem.styled';
 
-const SlideItem = ({ vistaSlide, scrollX, colunas, imagem }) => {
+const SlideItem = ({ vistaSlide, scrollX, children }) => {
     const [foraDeVista, setForaDeVista] = React.useState(false);
     const slideItemRef = React.useRef();
 
@@ -24,13 +24,18 @@ const SlideItem = ({ vistaSlide, scrollX, colunas, imagem }) => {
         }
     }, [vistaSlide, scrollX]);
 
+    React.useEffect(() => {
+        const filho = slideItemRef.current.querySelector(':scope > *');
+        slideItemRef.current.style.minWidth = window.getComputedStyle(filho).minWidth;
+    }, []);
+
     return (
         <Container
             ref={slideItemRef}
             foraDeVista={foraDeVista}
-            colunas={colunas}
-            imagem={imagem}
-        />
+        >
+            {children}
+        </Container>
     );
 };
 

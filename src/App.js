@@ -4,6 +4,7 @@ import './App.css';
 
 import SlideWrapper from './Componentes/SlideWrapper';
 import SlideItem from './Componentes/SlideItem';
+import ExemploItem from './Componentes/ExemploItem';
 
 const slide4Colunas = [
   { colunas: 4, imagem: 'https://picsum.photos/id/101/200/300' },
@@ -54,10 +55,13 @@ const App = () => {
           <SlideItem
             vistaSlide={vistaTela4Colunas}
             scrollX={scrollX4Colunas}
-            colunas={colunas}
-            imagem={imagem}
             key={index}
-          />
+          >
+            <ExemploItem
+              colunas={colunas}
+              imagem={imagem}
+            />
+          </SlideItem>
         )) }
       </SlideWrapper>
 
@@ -70,10 +74,13 @@ const App = () => {
           <SlideItem
             vistaSlide={vistaTela6Colunas}
             scrollX={scrollX6Colunas}
-            colunas={colunas}
-            imagem={imagem}
             key={index}
-          />
+          >
+            <ExemploItem
+              colunas={colunas}
+              imagem={imagem}
+            />
+          </SlideItem>
         )) }
       </SlideWrapper>
   
@@ -86,10 +93,13 @@ const App = () => {
           <SlideItem
             vistaSlide={vistaTela8Colunas}
             scrollX={scrollX8Colunas}
-            colunas={colunas}
-            imagem={imagem}
             key={index}
-          />
+          >
+            <ExemploItem
+              colunas={colunas}
+              imagem={imagem}
+            />
+          </SlideItem>
         )) }
       </SlideWrapper>
     </>
