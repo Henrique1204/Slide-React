@@ -2,6 +2,8 @@ import React from 'react';
 
 import SlideButtonArrow from '../SlideButtonArrow';
 
+import useMedia from '../../Hooks/useMedia';
+
 const SlideButtonsArrowNav = ({
     calcularPassoScroll,
     passos,
@@ -11,6 +13,7 @@ const SlideButtonsArrowNav = ({
 }) => {
     const [direitaDisabled, setDireitaDisabled] = React.useState(false);
     const [esquerdaDisabled, setEsquerdaDisabled] = React.useState(false);
+    const matchTablet = useMedia('(max-width: 1023px)');
 
     const checarUltimoMovimento = React.useCallback((passo, direcao) => {
         const passoSessao = passos * passo;
@@ -50,6 +53,8 @@ const SlideButtonsArrowNav = ({
 
         setDireitaDisabled(movimentoDireita.teste);
     }, [calcularPassoScroll, checarUltimoMovimento, setScrollX]);
+
+    if (matchTablet) return null;
 
     return (
         <nav>

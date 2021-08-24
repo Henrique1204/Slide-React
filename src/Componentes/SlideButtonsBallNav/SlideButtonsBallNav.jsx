@@ -2,18 +2,23 @@ import React from 'react';
 
 import SlideButtonBall from '../SlideButtonBall/SlideButtonBall';
 
-const SlideButtonBallNav = ({ passos, scrollX, setScrollX, itensSlide}) => {
-    const [slideItensOffset, setSlideItensOffset] = React.useState(null);
+const SlideButtonBallNav = ({ passos, scrollX, setScrollX, itensSlide, vistaTela }) => {
+    const [slideItensInfos, setSlideItensInfos] = React.useState(null);
 
     React.useEffect(() => {
         if (itensSlide) {
             const quantidadePassos = passos;
     
-            setSlideItensOffset(() => (
+            setSlideItensInfos(() => (
                 itensSlide.reduce((acc, item, index, array) => {
                     const diff = array.length - acc.length;
         
-                    return (diff >= quantidadePassos) ? [...acc, item.offsetLeft] : [...acc];
+                    const infosItem = {
+                        offset: item.offsetLeft,
+                        width: item.getBoundingClientRect().width
+                    }
+
+                    return (diff >= quantidadePassos) ? [...acc, infosItem] : [...acc];
                 }, [])
             ));
         }
@@ -21,11 +26,12 @@ const SlideButtonBallNav = ({ passos, scrollX, setScrollX, itensSlide}) => {
 
     return (
         <nav>
-            { slideItensOffset && slideItensOffset.map((offset, index) => (
+            { slideItensInfos && slideItensInfos.map((infos, index) => (
                 <SlideButtonBall
-                    offset={offset}
+                    infosItem={infos}
                     scrollX={scrollX}
                     setScrollX={setScrollX}
+                    vistaTela={vistaTela}
                     key={index}
                 />
             )) }

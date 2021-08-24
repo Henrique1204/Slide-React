@@ -1,17 +1,11 @@
 import styled  from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.ul`
     width: 100%;
     position: relative;
 
     & + & {
         margin-top: 4rem;
-    }
-
-    @media (max-width: 1366px) {
-        nav {
-            display: none;
-        }
     }
 `;
 
@@ -23,7 +17,7 @@ export const Slide = styled.div`
         display: flex;
         transition: transform 0.4s ease;
 
-        @media (max-width: 1366px) {
+        @media (max-width: 1023px) {
             overflow-x: scroll;
         }
     }

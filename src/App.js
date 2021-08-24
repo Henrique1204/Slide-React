@@ -50,6 +50,7 @@ const App = () => {
         setVistaTela={setVistaTela4Colunas}
         scrollX={scrollX4Colunas}
         setScrollX={setScrollX4Colunas}
+        vistaTela={vistaTela4Colunas}
       >
         { slide4Colunas.map(({ colunas, imagem }, index) => (
           <SlideItem
@@ -69,6 +70,7 @@ const App = () => {
         setVistaTela={setVistaTela6Colunas}
         scrollX={scrollX6Colunas}
         setScrollX={setScrollX6Colunas}
+        vistaTela={vistaTela6Colunas}
       >
         { slide6Colunas.map(({ colunas, imagem }, index) => (
           <SlideItem
@@ -92,6 +94,7 @@ const App = () => {
         setVistaTela={setVistaTela8Colunas}
         scrollX={scrollX8Colunas}
         setScrollX={setScrollX8Colunas}
+        vistaTela={vistaTela8Colunas}
       >
         { slide8Colunas.map(({ colunas, imagem }, index) => (
           <SlideItem

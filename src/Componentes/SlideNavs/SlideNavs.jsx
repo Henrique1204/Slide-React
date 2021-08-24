@@ -3,7 +3,7 @@ import React from 'react';
 import SlideButtonsArrowNav from '../SlideButtonsArrowNav';
 import SlideButtonsBallNav from '../SlideButtonsBallNav';
 
-const SlideNavs = ({ slideWrapperRef, slideRef, scrollX, setScrollX }) => {
+const SlideNavs = ({ slideWrapperRef, slideRef, scrollX, setScrollX, vistaTela }) => {
     const [showNavScroll, setShowNavScroll] = React.useState(false);
     const [itensSlide, setItensSlide] = React.useState(null);
     const [passos, setPassos] = React.useState(null);
@@ -51,6 +51,7 @@ const SlideNavs = ({ slideWrapperRef, slideRef, scrollX, setScrollX }) => {
                     scrollX={scrollX}
                     setScrollX={setScrollX}
                     itensSlide={itensSlide}
+                    vistaTela={vistaTela}
                 />
             </>
         );

@@ -15,9 +15,13 @@ export const Container = styled.button`
         margin-left: 0.5rem;
     }
 
-    &:hover {
+    &:hover, &:active, &:focus {
         border-color: #5B0DA9;
         color: #5B0DA9;
         transform: scale(1.1);
+    }
+
+    @media (max-width: 1023px) {
+        pointer-events: none;
     }
 `;
